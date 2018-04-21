@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ProccessNameSpace } from '../model/proccess';
 
 @Component({
   selector: 'app-uploader',
@@ -11,7 +12,7 @@ export class UploaderComponent implements OnInit {
   form: FormGroup;
   loading = false;
   array;
-  proccesses: Array<Proccess>;
+  proccesses: Array<any>;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
@@ -37,10 +38,10 @@ export class UploaderComponent implements OnInit {
 
     const raw = window.atob(formModel.file.value);
     const raw_proccesses = raw.split('\n');
-    const proccesses = new Array<Proccess>();
+    this.proccesses = new Array<any>();
     raw_proccesses.forEach(element => {
       const fieldProccess = element.split(' ');
-      const proccess = new Proccess();
+      const proccess = new ProccessNameSpace.Proccess();
       proccess.pid = Number(fieldProccess[0]);
       proccess.duration = Number(fieldProccess[1]);
       proccess.priority = Number(fieldProccess[2]);
@@ -48,8 +49,9 @@ export class UploaderComponent implements OnInit {
       if (fieldProccess.length > 4) {
         proccess.events = fieldProccess.slice(4);
       }
-      proccesses.push(proccess);
+      this.proccesses.push(proccess);
     });
+    console.log(this.proccesses);
   }
 
   onFileChange(event) {

@@ -7,7 +7,7 @@ import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 })
 export class RoundRobinComponent implements OnInit {
 
-  @Input() proccess: Array<Proccess>;
+  @Input() proccess: Array<any>;
 
   constructor() { }
 

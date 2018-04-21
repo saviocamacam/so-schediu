@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChange } from '@angular/core';
+import { ProccessNameSpace } from '../model/proccess';
 
 @Component({
   selector: 'app-priority',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 })
 export class PriorityComponent implements OnInit {
 
-  @Input() proccess: Array<Proccess>;
+  @Input() proccess: Array<any>;
 
   constructor() { }
 
@@ -17,7 +18,7 @@ export class PriorityComponent implements OnInit {
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnChanges(changes: SimpleChange) {
     if (this.proccess) {
-
+      console.log(this.proccess);
     }
   }
 

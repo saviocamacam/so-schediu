@@ -7,7 +7,7 @@ import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 })
 export class ShortestJobFirstComponent implements OnInit {
 
-  @Input() proccess: Array<Proccess>;
+  @Input() proccess: Array<any>;
 
   constructor() { }
 
