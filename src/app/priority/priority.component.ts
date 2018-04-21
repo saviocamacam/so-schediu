@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-priority',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./priority.component.css']
 })
 export class PriorityComponent implements OnInit {
+
+  @Input() proccess: Array<Proccess>;
 
   constructor() { }
 

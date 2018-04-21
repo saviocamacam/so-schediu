@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-shortest-job-first',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shortest-job-first.component.css']
 })
 export class ShortestJobFirstComponent implements OnInit {
+
+  @Input() proccess: Array<Proccess>;
 
   constructor() { }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-first-in-first-out',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./first-in-first-out.component.css']
 })
 export class FirstInFirstOutComponent implements OnInit {
+
+  @Input() proccess: Array<Proccess>;
 
   constructor() { }
 

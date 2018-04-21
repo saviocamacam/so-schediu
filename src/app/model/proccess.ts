@@ -1,4 +1,4 @@
-class Process {
+class Proccess {
     pid: number;
     priority: number;
     state: {running, ready, blocked};

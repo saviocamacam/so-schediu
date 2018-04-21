@@ -1,3 +1,24 @@
 class Scheduler {
-    process: Process;
+
+    constructor() {
+
+    }
+
+    fifo() {
+
+    }
+
+    sjf() {
+
+    }
+
+    rr() {
+
+    }
+
+    prio() {
+
+    }
+
+
 }

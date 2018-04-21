@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-round-robin',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./round-robin.component.css']
 })
 export class RoundRobinComponent implements OnInit {
+
+  @Input() proccess: Array<Proccess>;
 
   constructor() { }
 
