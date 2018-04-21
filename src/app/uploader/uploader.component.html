@@ -1,7 +1,20 @@
-<p>
-  uploader works!
-</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="pacote">Pacote</label>
+      <input type="file" accept=".txt" id="pacote" (change)="onFileChange($event)" #fileInput>
+      <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+    </div>
+    <button type="submit" class="btn btn-success">Submit
+      <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i>
+    </button>
+  </form>
+  <div>
+    <!-- <p *ngIf="array">{{array}} qualquer coisa</p> -->
+  </div>
+
+
 <app-priority [proccess]="proccess"></app-priority>
 <app-round-robin [proccess]="proccess"></app-round-robin>
 <app-shortest-job-first [proccess]="proccess"></app-shortest-job-first>
 <app-first-in-first-out [proccess]="proccess"></app-first-in-first-out>
+

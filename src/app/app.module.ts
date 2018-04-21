@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material';
-import { MatFileUploadModule } from 'angular-material-fileupload';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UploaderComponent } from './uploader/uploader.component';
@@ -26,8 +25,7 @@ import { RoundRobinComponent } from './round-robin/round-robin.component';
   imports: [
     BrowserModule,
     MatToolbarModule,
-    MatButtonModule,
-    MatFileUploadModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
