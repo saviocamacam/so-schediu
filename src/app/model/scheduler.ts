@@ -1,0 +1,3 @@
+class Scheduler {
+    process: Process;
+}
