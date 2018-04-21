@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'app-priority',
@@ -12,6 +12,13 @@ export class PriorityComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnChanges(changes: SimpleChange) {
+    if (this.proccess) {
+
+    }
   }
 
 }
