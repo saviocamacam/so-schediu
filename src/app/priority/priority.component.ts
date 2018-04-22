@@ -8,7 +8,7 @@ import { ProccessNameSpace } from '../model/proccess';
 })
 export class PriorityComponent implements OnInit {
 
-  @Input() proccess: Array<any>;
+  @Input() proccesses: Array<any>;
 
   constructor() { }
 
@@ -17,8 +17,8 @@ export class PriorityComponent implements OnInit {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnChanges(changes: SimpleChange) {
-    if (this.proccess) {
-      console.log(this.proccess);
+    if (this.proccesses) {
+      console.log(this.proccesses);
     }
   }
 

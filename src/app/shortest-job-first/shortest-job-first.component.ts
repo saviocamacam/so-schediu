@@ -7,7 +7,7 @@ import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 })
 export class ShortestJobFirstComponent implements OnInit {
 
-  @Input() proccess: Array<any>;
+  @Input() proccesses: Array<any>;
 
   constructor() { }
 
@@ -16,8 +16,8 @@ export class ShortestJobFirstComponent implements OnInit {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnChanges(changes: SimpleChange) {
-    if (this.proccess) {
-
+    if (this.proccesses) {
+      console.log(this.proccesses);
     }
   }
 
