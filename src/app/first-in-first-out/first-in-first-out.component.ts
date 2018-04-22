@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, SimpleChange } from '@angular/core';
+import { ProccessNameSpace } from '../model/proccess';
+import { SchedulerNameSpace } from '../model/scheduler';
 
 @Component({
   selector: 'app-first-in-first-out',
@@ -7,7 +9,7 @@ import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 })
 export class FirstInFirstOutComponent implements OnInit {
 
-  @Input() proccesses: Array<any>;
+  @Input() proccesses: Array<ProccessNameSpace.Proccess>;
 
   constructor() { }
 
@@ -17,7 +19,8 @@ export class FirstInFirstOutComponent implements OnInit {
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnChanges(changes: SimpleChange) {
     if (this.proccesses) {
-      console.log(this.proccesses);
+      const scheduler = new SchedulerNameSpace.Scheduler(this.proccesses);
+      scheduler.fifo();
     }
   }
 

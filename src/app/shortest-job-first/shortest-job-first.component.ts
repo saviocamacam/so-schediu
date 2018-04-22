@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChange } from '@angular/core';
+import { SchedulerNameSpace } from '../model/scheduler';
 
 @Component({
   selector: 'app-shortest-job-first',
@@ -17,7 +18,8 @@ export class ShortestJobFirstComponent implements OnInit {
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnChanges(changes: SimpleChange) {
     if (this.proccesses) {
-      console.log(this.proccesses);
+      const scheduler = new SchedulerNameSpace.Scheduler(this.proccesses);
+      scheduler.sjf();
     }
   }
 
