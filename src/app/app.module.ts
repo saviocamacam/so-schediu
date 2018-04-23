@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { UploaderComponent } from './uploader/uploader.component';
@@ -25,7 +28,10 @@ import { RoundRobinComponent } from './round-robin/round-robin.component';
   imports: [
     BrowserModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    MatCardModule,
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

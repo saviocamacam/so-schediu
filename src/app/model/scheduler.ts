@@ -19,7 +19,7 @@ export namespace SchedulerNameSpace {
             this.proccesses.forEach(proccess => {
                 proccess.timeBeginRun = time;
                 console.log('executa');
-                proccess.events.find( (element) => {
+                proccess.events.find((element) => {
                     if (Number(element) === proccess.duration) {
                         console.log('ger i/o');
                         for (let i = 0; i < 2; i++) {
@@ -73,6 +73,9 @@ export namespace SchedulerNameSpace {
                 }
                 return 0;
             });
+
+            console.log(sortedProccess);
+            return { tf: tf, tme: tme };
         }
     }
 }
