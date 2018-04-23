@@ -12,7 +12,7 @@ export class UploaderComponent implements OnInit {
   form: FormGroup;
   loading = false;
   array;
-  proccesses: Array<any>;
+  proccesses: Array<ProccessNameSpace.Proccess>;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
