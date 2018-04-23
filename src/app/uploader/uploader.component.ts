@@ -51,7 +51,7 @@ export class UploaderComponent implements OnInit {
       }
       this.proccesses.push(proccess);
     });
-    console.log(this.proccesses);
+    // console.log(this.proccesses);
   }
 
   onFileChange(event) {
