@@ -51,7 +51,7 @@ export namespace SchedulerNameSpace {
                 return 0;
             });
             console.log(sortedProccess);
-            return { tf: tf, tme: tme };
+            return { tf: tf, tme: tme, schedule: sortedProccess };
         }
 
         rr() {
