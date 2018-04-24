@@ -28,5 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Licence
 
-GNU [GPL V2](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[GNU GPL V2](https://www.gnu.org/licenses/gpl-3.0.en.html)
 Yes, the viral one.
