@@ -12,14 +12,23 @@ export namespace ProccessNameSpace {
         private _priority: number;
         private _state: state;
         private _timeComing: number;
-        private _events: Array<any>;
+        private _events: Array<number>;
         private _timeBeginRun: Date;
         private _timeCPU: Date;
         private _color: string;
+        private _pcStatus: Array<{enter: number, exit:number}>;
 
         constructor() {
             this._events = null;
             this._state = state.ready;
+        }
+
+        get pcStatus() {
+            return this._pcStatus;
+        }
+
+        set pcStatus(pcStatus: Array<{enter: number, exit: number}>) {
+            this._pcStatus = pcStatus;
         }
 
         get color() {
@@ -53,7 +62,7 @@ export namespace ProccessNameSpace {
         }
 
         get timeComing() {
-            return this.timeComing;
+            return this._timeComing;
         }
 
         set timeComing(timeComing: number) {

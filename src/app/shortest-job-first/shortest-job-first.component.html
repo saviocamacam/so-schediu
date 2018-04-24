@@ -1,13 +1,13 @@
 <mat-card>
   <mat-card-title>SHORTEST JOB FIRST</mat-card-title>
   <mat-card-content *ngIf="data">
-    <p *ngFor="let v of data.schedule">
+    <!-- <p *ngFor="let v of data.schedule">
       {{v._pid}} {{v._duration}}
-    </p>
+    </p> -->
     <mat-grid-list cols="25">
       <mat-grid-tile *ngFor="let v of data.schedule" [colspan]="v._duration" rowspan="2" [style.background]="v.color">
         <mat-list>
-          <mat-list-item>P{{v._pid}}</mat-list-item>
+          <mat-list-item>P{{v._pid}} - {{v._duration}} - {{v._timeComing}}</mat-list-item>
           <mat-divider></mat-divider>
           <mat-grid-list cols="2">
             <mat-grid-tile colspan="1" rowspan="1">
