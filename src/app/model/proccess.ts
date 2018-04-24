@@ -15,10 +15,19 @@ export namespace ProccessNameSpace {
         private _events: Array<any>;
         private _timeBeginRun: Date;
         private _timeCPU: Date;
+        private _color: string;
 
         constructor() {
             this._events = null;
             this._state = state.ready;
+        }
+
+        get color() {
+            return this._color;
+        }
+
+        set color(color: string) {
+            this._color = color;
         }
 
         get pid() {

@@ -12,9 +12,9 @@ export namespace SchedulerNameSpace {
         }
 
         fifo() {
-            console.log('FIFO');
-            console.log(this.proccesses);
-            let time = 0;
+            // console.log('FIFO');
+            // console.log(this.proccesses);
+            /* let time = 0;
             let j = 0;
             this.proccesses.forEach(proccess => {
                 proccess.timeBeginRun = time;
@@ -32,7 +32,7 @@ export namespace SchedulerNameSpace {
                 });
                 time++;
                 proccess.duration += + (time + j);
-            });
+            }); */
         }
 
         sjf() {
@@ -41,7 +41,8 @@ export namespace SchedulerNameSpace {
             const tme = 0;
 
             // console.log(this.proccesses);
-            const sortedProccess: ProccessNameSpace.Proccess[] = this.proccesses.sort((n1, n2) => {
+            const myClonedArray = Object.assign([], this.proccesses);
+            const sortedProccess: ProccessNameSpace.Proccess[] = myClonedArray.sort((n1, n2) => {
                 if (n1.duration > n2.duration) {
                     return 1;
                 }
@@ -60,22 +61,24 @@ export namespace SchedulerNameSpace {
         }
 
         prio() {
-            // console.log('PRIO');
+            console.log('PRIO');
             const tf = 0;
             const tme = 0;
 
-            const sortedProccess: ProccessNameSpace.Proccess[] = this.proccesses.sort((n1, n2) => {
-                if (n1.priority > n2.priority) {
+            const myClonedArray = Object.assign([], this.proccesses);
+
+            const sortedProccessPrio: ProccessNameSpace.Proccess[] = myClonedArray.sort((v1, v2) => {
+                if (v1.priority > v2.priority) {
                     return 1;
                 }
-                if (n1.priority < n2.priority) {
+                if (v1.priority < v2.priority) {
                     return -1;
                 }
                 return 0;
             });
 
-            console.log(sortedProccess);
-            return { tf: tf, tme: tme };
+            console.log(sortedProccessPrio);
+            return { tf: tf, tme: tme, schedule: sortedProccessPrio };
         }
     }
 }

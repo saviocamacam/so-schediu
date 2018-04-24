@@ -39,6 +39,9 @@ export class UploaderComponent implements OnInit {
     const raw = window.atob(formModel.file.value);
     const raw_proccesses = raw.split('\n');
     this.proccesses = new Array<any>();
+    var i = 0;
+    var colors = ['#D50000', '#AA00FF', '#C0CA33', '#0091EA', '#FF9800', '#BF360C'];
+
     raw_proccesses.forEach(element => {
       const fieldProccess = element.split(' ');
       const proccess = new ProccessNameSpace.Proccess();
@@ -46,12 +49,14 @@ export class UploaderComponent implements OnInit {
       proccess.duration = Number(fieldProccess[1]);
       proccess.priority = Number(fieldProccess[2]);
       proccess.timeComing = Number(fieldProccess[3]);
+      proccess.color = colors[i % colors.length];
       if (fieldProccess.length > 4) {
         proccess.events = fieldProccess.slice(4);
       }
       this.proccesses.push(proccess);
+      i++;
     });
-    // console.log(this.proccesses);
+    console.log(this.proccesses);
   }
 
   onFileChange(event) {

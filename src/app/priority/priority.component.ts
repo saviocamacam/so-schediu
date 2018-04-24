@@ -10,6 +10,7 @@ import { SchedulerNameSpace } from '../model/scheduler';
 export class PriorityComponent implements OnInit {
 
   @Input() proccesses: Array<ProccessNameSpace.Proccess>;
+  data: { tf: number, tme: number, schedule: Array<ProccessNameSpace.Proccess> };
 
   constructor() { }
 
@@ -20,7 +21,7 @@ export class PriorityComponent implements OnInit {
   ngOnChanges(changes: SimpleChange) {
     if (this.proccesses) {
       const scheduler = new SchedulerNameSpace.Scheduler(this.proccesses);
-      scheduler.prio();
+      this.data = scheduler.prio();
     }
   }
 
