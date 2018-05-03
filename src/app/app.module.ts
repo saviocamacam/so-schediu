@@ -16,8 +16,6 @@ import { FirstInFirstOutComponent } from './first-in-first-out/first-in-first-ou
 import { PriorityComponent } from './priority/priority.component';
 import { RoundRobinComponent } from './round-robin/round-robin.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [
@@ -30,7 +28,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RoundRobinComponent
   ],
   imports: [
-    NgbModule.forRoot(),
     BrowserModule,
     MatToolbarModule,
     MatCardModule,

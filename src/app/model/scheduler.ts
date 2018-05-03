@@ -37,7 +37,7 @@ export namespace SchedulerNameSpace {
 
         sjf() {
             console.log('SJF');
-            var tf = 0;
+            let tf = 0;
             const tme = 0;
 
             // console.log(this.proccesses);
@@ -49,7 +49,7 @@ export namespace SchedulerNameSpace {
                 if (n1.duration < n2.duration) {
                     return -1;
                 }
-                if (n1.duration == n2.duration) {
+                if (n1.duration === n2.duration) {
                     if (n1.timeComing > n2.timeComing) {
                         return 1;
                     }
@@ -59,12 +59,13 @@ export namespace SchedulerNameSpace {
                 }
                 return 0;
             });
-            //console.log(sortedProccess);
+            // console.log(sortedProccess);
             sortedProccess.forEach(proccess => {
                 tf = tf + proccess.duration;
-                if (proccess.events)
-                    var io = proccess.events.length * this.ioSlice;
-                tf = tf + io;
+                if (proccess.events) {
+                    const io = proccess.events.length * this.ioSlice;
+                    tf = tf + io;
+                }
             });
 
             return { tf: tf, tme: tme, schedule: sortedProccess };
@@ -77,7 +78,7 @@ export namespace SchedulerNameSpace {
 
         prio() {
             console.log('PRIO');
-            var tf = 0;
+            let tf = 0;
             const tme = 0;
 
             const myClonedArray = Object.assign([], this.proccesses);
@@ -89,7 +90,7 @@ export namespace SchedulerNameSpace {
                 if (n1.priority < n2.priority) {
                     return -1;
                 }
-                if (n1.priority == n2.priority) {
+                if (n1.priority === n2.priority) {
                     if (n1.timeComing > n2.timeComing) {
                         return 1;
                     }
@@ -100,23 +101,23 @@ export namespace SchedulerNameSpace {
                 return 0;
             });
 
-            // do the thing 
+            // do the thing
             sortedProccess.forEach(proccess => {
                 tf = tf + proccess.duration;
                 if (proccess.events) {
-                    var io = proccess.events.length * this.ioSlice;
+                    const io = proccess.events.length * this.ioSlice;
                     tf = tf + io;
                 }
             });
 
             console.log(tf);
-            var pc = 0;
+            let pc = 0;
             for (pc = 0; pc < tf; pc++) {
                 sortedProccess.forEach(proccess => {
 
                 });
             }
-            //console.log(sortedProccess);
+            // console.log(sortedProccess);
             return { tf: tf, tme: tme, schedule: sortedProccess };
         }
     }
