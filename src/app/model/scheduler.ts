@@ -12,27 +12,31 @@ export namespace SchedulerNameSpace {
         }
 
         fifo() {
-            // console.log('FIFO');
-            // console.log(this.proccesses);
-            /* let time = 0;
-            let j = 0;
-            this.proccesses.forEach(proccess => {
-                proccess.timeBeginRun = time;
-                console.log('executa');
-                proccess.events.find((element) => {
-                    if (Number(element) === proccess.duration) {
-                        console.log('ger i/o');
-                        for (let i = 0; i < 2; i++) {
-                            console.log(i); // ger i/o duration (example)
-                        }
-                        j++;
-                        console.log('ger i/o : ', (typeof Number(element)), element);
-                        return element;
-                    }
+            const tf = 0;
+            const tp = 0;
+            const sliceIO = 2;
+            let sumDuration = 0
+            let sumIO = 0;
+            let i = 0;
+
+            const myClonedArray = Object.assign([], this.proccesses);
+
+            myClonedArray.forEach(proccess => {
+                sumDuration += proccess.duration;
+                if(proccess.events) {
+                    proccess.events.forEach(eventIO => {
+                        sumIO += Number(eventIO);
+                    });
+                }
+            });
+
+            while(i < (sumDuration+sumIO)) {
+                myClonedArray.forEach(proccess => {
+                    
                 });
-                time++;
-                proccess.duration += + (time + j);
-            }); */
+            }
+            
+           
         }
 
         sjf() {
