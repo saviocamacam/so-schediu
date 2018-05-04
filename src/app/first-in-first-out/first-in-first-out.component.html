@@ -1,5 +1,26 @@
 <mat-card>
-  <mat-card-title>First In First Out</mat-card-title>
+  <mat-card-title>FIRST IN FIRST OUT</mat-card-title>
+  <mat-card-content *ngIf="data">
+    <!-- <p *ngFor="let v of data.schedule">
+      {{v._pid}} {{v._duration}}
+    </p> -->
+    <mat-grid-list cols="25">
+      <mat-grid-tile *ngFor="let v of data.schedule" [colspan]="v._duration" rowspan="2" [style.background]="v.color">
+        <mat-list>
+          <mat-list-item>P{{v._pid}} - {{v._duration}} - {{v._timeComing}}</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-grid-list cols="2">
+            <mat-grid-tile colspan="1" rowspan="1">
+              <mat-list-item>1</mat-list-item>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+              <mat-list-item>1</mat-list-item>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-list>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
   <mat-card-footer>
     <mat-grid-list cols="2" rowHeight="8:1">
       <mat-grid-tile>

@@ -1,22 +1,21 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProccessNameSpace } from '../model/proccess';
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { ProccessNameSpace } from "../model/proccess";
 
 @Component({
-  selector: 'app-uploader',
-  templateUrl: './uploader.component.html',
-  styleUrls: ['./uploader.component.css']
+  selector: "app-uploader",
+  templateUrl: "./uploader.component.html",
+  styleUrls: ["./uploader.component.css"]
 })
 export class UploaderComponent implements OnInit {
-
   form: FormGroup;
   loading = false;
   array;
   proccesses: Array<ProccessNameSpace.Proccess>;
 
-  @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild("fileInput") fileInput: ElementRef;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.createForm();
@@ -24,26 +23,32 @@ export class UploaderComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      type: ['', Validators.required],
+      type: ["", Validators.required],
       file: null
     });
   }
 
-  clearFile() {
-
-  }
+  clearFile() {}
 
   onSubmit() {
     const formModel = this.form.value;
 
     const raw = window.atob(formModel.file.value);
-    const raw_proccesses = raw.split('\n');
+    const raw_proccesses = raw.split("\n");
     this.proccesses = new Array<any>();
     var i = 0;
-    var colors = ['#D50000', '#AA00FF', '#C0CA33', '#0091EA', '#FF9800', '#BF360C'];
+    const slice = 2;
+    var colors = [
+      "#D50000",
+      "#AA00FF",
+      "#C0CA33",
+      "#0091EA",
+      "#FF9800",
+      "#BF360C"
+    ];
 
     raw_proccesses.forEach(element => {
-      const fieldProccess = element.split(' ');
+      const fieldProccess = element.split(" ");
       const proccess = new ProccessNameSpace.Proccess();
       proccess.pid = Number(fieldProccess[0]);
       proccess.duration = Number(fieldProccess[1]);
@@ -52,6 +57,22 @@ export class UploaderComponent implements OnInit {
       proccess.color = colors[i % colors.length];
       if (fieldProccess.length > 4) {
         proccess.events = fieldProccess.slice(4);
+        proccess.scheduleArray = new Array<number>();
+        let indexEvents = 0;
+        for (
+          let j = 0;
+          j < proccess.duration + proccess.events.length * slice;
+          j++
+        ) {
+          if (j == proccess.events[indexEvents]) {
+            for (let k = 0; k < slice; k++) {
+              proccess.scheduleArray.push(1);
+            }
+            indexEvents++;
+          } else {
+            proccess.scheduleArray.push(0);
+          }
+        }
       }
       this.proccesses.push(proccess);
       i++;
@@ -65,13 +86,12 @@ export class UploaderComponent implements OnInit {
       const file = event.target.files[0];
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.form.get('file').setValue({
+        this.form.get("file").setValue({
           filename: file.name,
           filetype: file.type,
-          value: reader.result.split(',')[1]
+          value: reader.result.split(",")[1]
         });
       };
     }
   }
-
 }
