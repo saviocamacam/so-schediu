@@ -39,8 +39,8 @@ export class UploaderComponent implements OnInit {
     const raw = window.atob(formModel.file.value);
     const raw_proccesses = raw.split('\n');
     this.proccesses = new Array<any>();
-    var i = 0;
-    var colors = ['#D50000', '#AA00FF', '#C0CA33', '#0091EA', '#FF9800', '#BF360C'];
+    let i = 0;
+    const colors = ['#D50000', '#AA00FF', '#C0CA33', '#0091EA', '#FF9800', '#BF360C'];
 
     raw_proccesses.forEach(element => {
       const fieldProccess = element.split(' ');

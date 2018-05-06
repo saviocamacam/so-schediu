@@ -16,7 +16,7 @@ export namespace ProccessNameSpace {
         private _timeBeginRun: Date;
         private _timeCPU: Date;
         private _color: string;
-        private _pcStatus: Array<{enter: number, exit:number}>;
+        private _pcStatus: Array<{ enter: number, exit: number }>;
 
         constructor() {
             this._events = null;
@@ -27,7 +27,7 @@ export namespace ProccessNameSpace {
             return this._pcStatus;
         }
 
-        set pcStatus(pcStatus: Array<{enter: number, exit: number}>) {
+        set pcStatus(pcStatus: Array<{ enter: number, exit: number }>) {
             this._pcStatus = pcStatus;
         }
 

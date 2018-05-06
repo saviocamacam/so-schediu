@@ -15,28 +15,31 @@ export namespace SchedulerNameSpace {
             const tf = 0;
             const tp = 0;
             const sliceIO = 2;
-            let sumDuration = 0
+            let sumDuration = 0;
             let sumIO = 0;
             let i = 0;
+            const timeComing = new Array<number>();
 
             const myClonedArray = Object.assign([], this.proccesses);
 
             myClonedArray.forEach(proccess => {
+                timeComing.push(proccess.timeComing);
                 sumDuration += proccess.duration;
-                if(proccess.events) {
+                if (proccess.events) {
                     proccess.events.forEach(eventIO => {
                         sumIO += Number(eventIO);
                     });
                 }
             });
 
-            while(i < (sumDuration+sumIO)) {
+            while (i < (sumDuration + sumIO)) {
                 myClonedArray.forEach(proccess => {
-                    
+
                 });
+                i++;
             }
-            
-           
+
+
         }
 
         sjf() {
