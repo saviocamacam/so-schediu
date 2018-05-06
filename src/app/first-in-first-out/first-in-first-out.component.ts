@@ -8,20 +8,22 @@ import { SchedulerNameSpace } from '../model/scheduler';
   styleUrls: ['./first-in-first-out.component.css']
 })
 export class FirstInFirstOutComponent implements OnInit {
-
   @Input() proccesses: Array<ProccessNameSpace.Proccess>;
+  data: {
+    tf: number;
+    tme: number;
+    schedule: Array<ProccessNameSpace.Proccess>;
+  };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnChanges(changes: SimpleChange) {
     if (this.proccesses) {
       const scheduler = new SchedulerNameSpace.Scheduler(this.proccesses);
-      scheduler.fifo();
+      this.data = scheduler.fifo();
     }
   }
-
 }
