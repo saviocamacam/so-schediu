@@ -21,7 +21,7 @@ export class PriorityComponent implements OnInit {
   ngOnChanges(changes: SimpleChange) {
     if (this.proccesses) {
       const scheduler = new SchedulerNameSpace.Scheduler(this.proccesses);
-      this.data = scheduler.prio();
+      // this.data = scheduler.prio();
     }
   }
 

@@ -14,9 +14,8 @@ export namespace SchedulerNameSpace {
       const tf = 0;
       // const tp = 0;
       const tme = 0;
-      const sliceIO = 2;
       let sumDuration = 0;
-      let sumIO = 0;
+
       let i = 0,
         j = 0;
       const timeCommingArray = new Array<number>();
@@ -27,57 +26,62 @@ export namespace SchedulerNameSpace {
       myClonedArray.forEach(proccess => {
         timeCommingArray.push(proccess.timeComing);
         sumDuration += proccess.duration;
-        if (proccess.events) {
-          proccess.events.forEach(eventIO => {
-            sumIO += Number(eventIO);
-          });
-        }
       });
-      console.log(sumDuration);
-      console.log(sumIO);
-      while (i < sumDuration + sumIO) {
+      // console.log('total duration sum: ' + sumDuration);
+      while (i < sumDuration) {
+        console.log('PC ' + i);
         myClonedArray.forEach(proccess => {
-          console.log('PC ' + i);
-          if (i === myClonedArray[myClonedArray.indexOf(proccess)].timeComing) {
+          // tslint:disable-next-line:triple-equals
+          if (i == myClonedArray[myClonedArray.indexOf(proccess)].timeComing) {
+            console.log(
+              'Processo ' +
+              myClonedArray[myClonedArray.indexOf(proccess)].pid +
+              ' Entrou em ' +
+              i
+            );
             const p = new ProccessNameSpace.Proccess();
             let d1 = 0,
               d2 = 0;
-            console.log(proccess.scheduleArray);
+            if (proccess.scheduleArray) {
+              console.log(proccess.scheduleArray);
+            }
             if (proccess.events) {
               for (
                 j = 0;
-                j < proccess.duration + proccess.events.length * sliceIO;
+                j < proccess.scheduleArray.length;
                 j++
               ) {
-                if (proccess.scheduleArray[j] === 0) {
+                // tslint:disable-next-line:triple-equals
+                if (proccess.scheduleArray[j] == 0) {
                   d1++;
-                  if (proccess.scheduleArray[j + 1] === 1) {
+                  // tslint:disable-next-line:triple-equals
+                  if (proccess.scheduleArray[j + 1] == 1 || j == proccess.scheduleArray.length - 1) {
                     const newProccess = new ProccessNameSpace.Proccess();
-                    newProccess.duration = d1;
                     newProccess.pid = proccess.pid;
+                    newProccess.timeBeginRun = i - d1;
+                    newProccess.timeEndRun = i + d1;
+                    newProccess.duration = d1;
                     newProccess.color = proccess.color;
                     newProccess.timeComing = proccess.timeComing;
                     scheduledArray.push(newProccess);
                     d1 = 0;
                   }
                 }
-                if (proccess.scheduleArray[j] === 1) {
+                // tslint:disable-next-line:triple-equals
+                if (proccess.scheduleArray[j] == 1) {
                   d2++;
-                  if (proccess.scheduleArray[j + 1] === 0) {
+                  // tslint:disable-next-line:triple-equals
+                  if (proccess.scheduleArray[j + 1] == 0 || j == proccess.scheduleArray.length - 1) {
                     const newProccess = new ProccessNameSpace.Proccess();
+                    newProccess.pid = 100;
+                    newProccess.timeBeginRun = i - d2;
+                    newProccess.timeEndRun = i + d2;
                     newProccess.duration = d2;
-                    newProccess.pid = -1;
                     scheduledArray.push(newProccess);
                     d2 = 0;
                   }
                 }
               }
-              // console.log(
-              //   "Processo " +
-              //     myClonedArray[myClonedArray.indexOf(proccess)].pid +
-              //     " Entrou em " +
-              //     i
-              // );
             } else {
               scheduledArray.push(proccess);
             }
@@ -103,7 +107,8 @@ export namespace SchedulerNameSpace {
           if (n1.duration < n2.duration) {
             return -1;
           }
-          if (n1.duration === n2.duration) {
+          // tslint:disable-next-line:triple-equals
+          if (n1.duration == n2.duration) {
             if (n1.timeComing > n2.timeComing) {
               return 1;
             }
@@ -146,7 +151,8 @@ export namespace SchedulerNameSpace {
           if (n1.priority < n2.priority) {
             return -1;
           }
-          if (n1.priority === n2.priority) {
+          // tslint:disable-next-line:triple-equals
+          if (n1.priority == n2.priority) {
             if (n1.timeComing > n2.timeComing) {
               return 1;
             }
@@ -170,7 +176,7 @@ export namespace SchedulerNameSpace {
       console.log(tf);
       let pc = 0;
       for (pc = 0; pc < tf; pc++) {
-        sortedProccess.forEach(proccess => {});
+        sortedProccess.forEach(proccess => { });
       }
       // console.log(sortedProccess);
       return { tf: tf, tme: tme, schedule: sortedProccess };

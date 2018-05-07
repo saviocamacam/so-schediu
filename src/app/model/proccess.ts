@@ -12,7 +12,8 @@ export namespace ProccessNameSpace {
     private _state: state;
     private _timeComing: number;
     private _events: Array<number>;
-    private _timeBeginRun: Date;
+    private _timeBeginRun: number;
+    private _timeEndRun: number;
     private _timeCPU: Date;
     private _color: string;
     private _scheduleArray: Array<number>;
@@ -90,6 +91,13 @@ export namespace ProccessNameSpace {
 
     set timeBeginRun(timeBeginRun) {
       this._timeBeginRun = timeBeginRun;
+    }
+    get timeEndRun() {
+      return this.timeEndRun;
+    }
+
+    set timeEndRun(timeEndRun) {
+      this._timeEndRun = timeEndRun;
     }
 
     get timeCPU() {

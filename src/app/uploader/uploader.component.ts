@@ -37,7 +37,6 @@ export class UploaderComponent implements OnInit {
     const raw_proccesses = raw.split('\n');
     this.proccesses = new Array<any>();
     let i = 0;
-    const slice = 2;
     const colors = [
       '#D50000',
       '#AA00FF',
@@ -55,19 +54,20 @@ export class UploaderComponent implements OnInit {
       proccess.priority = Number(fieldProccess[2]);
       proccess.timeComing = Number(fieldProccess[3]);
       proccess.color = colors[i % colors.length];
+
+
       if (fieldProccess.length > 4) {
         proccess.events = fieldProccess.slice(4);
         proccess.scheduleArray = new Array<number>();
         let indexEvents = 0;
         for (
           let j = 0;
-          j < proccess.duration + proccess.events.length * slice;
+          j < proccess.duration;
           j++
         ) {
-          if (j === proccess.events[indexEvents]) {
-            for (let k = 0; k < slice; k++) {
-              proccess.scheduleArray.push(1);
-            }
+          // tslint:disable-next-line:triple-equals
+          if (j == proccess.events[indexEvents]) {
+            proccess.scheduleArray.push(1);
             indexEvents++;
           } else {
             proccess.scheduleArray.push(0);

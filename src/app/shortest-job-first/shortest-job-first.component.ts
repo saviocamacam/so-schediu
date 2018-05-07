@@ -22,7 +22,7 @@ export class ShortestJobFirstComponent implements OnInit {
   ngOnChanges(changes: SimpleChange) {
     if (this.proccesses) {
       const scheduler = new SchedulerNameSpace.Scheduler(this.proccesses);
-      this.data = scheduler.sjf();
+      // this.data = scheduler.sjf();
     }
   }
 
